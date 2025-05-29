@@ -37,9 +37,9 @@ A PHP-powered web UI + Bash backend to generate and FTP full cPanel backups for 
 
 ## 📋 Installation
 
-1. **Clone or upload** this repo under your webroot (e.g. `public_html/migration/`):  
+1. **Clone or upload to destination host under a live cpanel account** this repo under yourlivesite webroot (e.g. `public_html/migration/`):  
    ```bash
-   git clone https://github.com/you/full-reseller-migration.git /home/yourcpuser/public_html/migration
+   git clone https://github.com/opensaucebaus/cpanel-tools.git /home/yourlivesite/public_html/migration
 
 
 Secure with HTTP Basic Auth (optional but recommended):
@@ -49,11 +49,11 @@ htpasswd -c /home/yourcpuser/public_html/migration/.htpasswd admin
 
 Set permissions:
 
-chmod +x /home/yourcpuser/public_html/migration/migrations_script.sh
-chown -R yourcpuser:yourcpuser /home/yourcpuser/public_html/migration
+chmod +x /home/yourlivesite/public_html/migration/1.1Reseller_Migration_Tool_WebUI_Full/migrations_script.sh
+chown -R yourcpuser:yourcpuser /home/yourcpuser/public_html/migration - if you cloned as root and not the cpuser
 
 
-Visit https://yourdomain.com/migration/ in your browser.
+Visit https://yourdomain.com/migration/1.1Reseller_Migration_Tool_WebUI_Full in your browser.
 
 
 🚀 Usage
