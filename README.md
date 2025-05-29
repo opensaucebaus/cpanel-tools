@@ -188,6 +188,6 @@ Migration complete.
 ## 🙏 Support
 
 If these tools made your life easier, please consider buying me a coffee (or a pizza)!  
-Your donation helps me keep improving and maintaining them.  
+Your support helps me a lot!  
 
 [Donate via PayPal](https://www.paypal.com/donate/?hosted_button_id=UGQVQEM655FAG)
