@@ -1,0 +1,145 @@
+[%
+USE Whostmgr;
+USE JSON;
+USE Api2;
+
+# Ensure rtl_bootstrap is always defined
+IF locale.get_html_dir_attr() == 'rtl';
+    SET rtl_bootstrap = Whostmgr.find_file_url('/3rdparty/bootstrap-rtl/optimized/dist/css/bootstrap-rtl.min.css');
+ELSE;
+    SET rtl_bootstrap = '';
+END;
+
+SET styleSheets = [
+    rtl_bootstrap,
+    '/libraries/fontawesome/css/font-awesome.min.css',
+    'css/style.css'
+];
+
+WRAPPER 'master_templates/master.tmpl'
+    header = locale.maketext("MailSync")
+    stylesheets = styleSheets,
+    hide_license_warnings = 1
+    theme='bootstrap'
+%]
+[% 
+    # Fetch the required strength
+    Api2.pre_exec("PasswdStrength", "get_required_strength");
+    SET required_strength_resp = Api2.exec("PasswdStrength", "get_required_strength", {"app"=>"pop"});
+    Api2.post_exec("PasswdStrength", "get_required_strength");
+
+    IF required_strength_resp.size();
+        SET required_strength = required_strength_resp.0.strength;
+    ELSE;
+        SET required_strength = 0;
+    END;
+%]
+<script>var required_strength = parseInt('[% required_strength %]', 10) || 0;;</script>
+
+ <script src="js/jquery.min.js"></script>
+ <script src="js/bootstrap.min.js"></script>
+ <script src="js/jquery.dataTables.min.js"></script>
+ <script src="js/dataTables.select.min.js"></script>
+ <script src="js/dataTables.bootstrap.min.js"></script>
+ 
+ <link rel="stylesheet" href="css/dataTables.bootstrap.min.css">
+ <link rel="stylesheet" href="css/select.dataTables.min.css">
+ 
+<div>
+<br>
+<img src="images/plugin-banner.png" alt="MailSync Banner"/><br>
+<span class="powered">Powered by <a href="https://google.com" target="_blank" rel="noopener">YourNameHere</a></span><br>
+<div id="grad1"> </div><br>
+</div>
+<div id="exTab1" class="container">	
+<ul class="nav nav-tabs" id="myTabs">
+			<li id="main_li" class="active"><a  href="#1" data-toggle="tab">Domains</a>
+			</li>
+			<li class="disabled disabledTab"><a href="#2" data-toggle="tab" >Email accounts</a>
+			</li>
+			<li class="disabled disabledTab"><a href="#3" data-toggle="tab">Settings</a>
+			</li>
+			<li class="disabled disabledTab"><a href="#4" data-toggle="tab">Sync</a>
+			</li>
+			<li ><a href="#5" data-toggle="tab">Logs</a>
+			</li>
+		</ul>
+
+			<div class="tab-content ">
+			  <div class="tab-pane active" id="1">
+			  <br>
+				<div id="alert" class="alert alert-danger" style="display: none;">
+					<span class="glyphicon glyphicon-remove-sign"></span>
+					<div class="alert-message">
+						<strong>Error:</strong> Please Select a domain to proceed...
+					</div>
+				</div>
+					<div id="show_domains">
+						<center>Please wait while loading .... <img src=images/progress.gif /></center>
+					</div>
+				</div>
+				<div class="tab-pane" id="2">
+				<br>
+				<div id="alert_email" class="alert alert-danger" style="display: none;">
+					<span class="glyphicon glyphicon-remove-sign"></span>
+					<div class="alert-message">
+						<strong>Error:</strong> Please try again later...
+					</div>
+				</div>
+					<div id="show_mail">
+						<center>Please wait while loading .... <img src=images/progress.gif /></center>
+					</div>
+					
+				</div>
+        <div class="tab-pane" id="3">
+				<br>
+          		<div id="alert_email_confirm" class="alert alert-danger" style="display: none;">
+					<span class="glyphicon glyphicon-remove-sign"></span>
+					<div class="alert-message">
+						<strong>Error:</strong> Please try again later...
+					</div>
+				</div>
+					<div id="show_mail_confirm">
+						<center>Please wait while loading .... <img src=images/progress.gif /></center>
+					</div>
+		</div>
+		<div class="tab-pane" id="4">
+				<br>
+				<div id="alert_sync_confirm" class="alert alert-danger" style="display: none;">
+					<span class="glyphicon glyphicon-remove-sign"></span>
+					<div class="alert-message">
+						<strong>Error:</strong> Please try again later...
+					</div>
+				</div>
+					<div id="show_sync_confirm">
+						<center>Please wait while loading .... <img src=images/progress.gif /></center>
+					</div>
+					
+		</div>
+		<div class="tab-pane" id="5">
+				<br>
+				<div id="alert_log" class="alert alert-danger" style="display: none;">
+					<span class="glyphicon glyphicon-remove-sign"></span>
+					<div class="alert-message">
+						<strong>Error:</strong> Please try again later...
+					</div>
+				</div>
+					<div id="show_log">
+						<center>Please wait while loading .... <img src=images/progress.gif /></center>
+					</div>
+					
+		</div>		
+			</div>
+  </div>
+  <br>
+  <br>
+  <div id="grad1"> </div><br>
+  <div class="pull-right">
+  <strong>
+  Version: 1.2
+  </strong> &nbsp;&nbsp;
+  <a href="https://google.com" target="_blank" rel="noopener">Forum</a> &nbsp;&nbsp;
+  <a href="https://google.com" target="_blank" rel="noopener">Feedback</a> &nbsp;&nbsp;
+  </div>
+<script src="js/MailSync.js"></script>
+[% END %]
