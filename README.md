@@ -1,20 +1,33 @@
 # cpanel-tools
 # cPanel Reseller Migration Toolkit
 
+![Full_Ui](https://github.com/user-attachments/assets/98b3a0e2-8cfa-414f-9a5e-ab7ec48a5179)
+![Partial_Ui](https://github.com/user-attachments/assets/7a1f8527-9b10-429e-8527-8103c821e335)
 
 
 **Overview:**
-Migration Tools to generate 4 full cpanel account backups at a time then transfer to your destination host over ftp untill All/Specified account backups are migrated - then run seperate bulk restore script on destination host. (you can increase the limit by editing the script - 4 is just default to avoid overloading the source host - some hosts will flag the script and kill it if you cause too much load on a shared server so rather be safe. 
+Migration Tools to generate 4 full cpanel account backups at a time then transfer to your destination host over ftp untill All/Specified account backups are migrated - then run seperate bulk restore script on destination host. (you can increase the limit by editing the script - 4 is just default to avoid overloading the source host - some hosts will flag the script and kill it if you cause too much load on a shared server so rather be safe.
+
 Full and Specific account only migration tools.
+
 Bulk Restore script
+
 Update DNS Zones script
+
 Suspend Origin cPanel accounts
+
 Change Ownership of migrated or other cPanel accounts
+
 Mailsync Plugin for WHM using imapsync
+
 WSL version of Mailsync script for quick bulk mail migrations
+
 WSL DNS Checker
+
 Wp-admin injector
+
 SSL Generator for offline/dev sites using CloudFlare
+
 
 ## The following Tools have been tested on **cPanel/WHM v126.0.16** (CloudLinux 9.5.0), **PHP 8.2**. ##
 
@@ -108,6 +121,8 @@ _If you don’t have root access, ask your host to restore the accounts for you.
     ./bulkrestore.sh  
 This will invoke /scripts/restorepkg and display restore progress. (Must be run as root.)
 
+![whm_terminal](https://github.com/user-attachments/assets/ec18574a-9bc6-46ed-8e9e-ab4f15229434)
+
 ---
 
 **d. (OPTIONAL) Update DNS zones**  
@@ -145,6 +160,8 @@ In some cases the source host NS will reflect under the DNS zones of the restore
 Clean up "backups" folder on DESTINATION HOST once all accounts` integrity confirmed - adjust quota for reseller account as needed based on reseller package.
 
 Migration complete.
+
+
 
 **I hope these tools make your life easier :) **
 
