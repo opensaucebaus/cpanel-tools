@@ -16,17 +16,18 @@ A simple script to install the MailSync cPanel/WHM plugin. Run as **root** over 
 
 1. **Upload** the installer script and plugin folders to your WHM server, for example to `/root/MailSync/`:
 
-   ```bash
-   scp -r MailSync/ root@your-server:/root/
 Log in as root via SSH or open Terminal in WHM.
 
-Make the installer executable:
+2. Make the installer executable:
 
 cd /root/MailSync
 chmod +x install.sh
-Run the installer:
 
+3. Run the installer:
 ./install.sh
+
+
+
 The script will:
 
 Verify you’re root.
@@ -44,8 +45,10 @@ Check for missing files and report success or errors.
 Logs are saved to:
 
 /tmp/MailSync/install.log
+
+
 ✅ Post-Install
-Visit WHM → Plugins → MailSync to confirm the plugin appears.
+##Visit WHM → Plugins → MailSync to confirm the plugin appears.## - you may need to hard refresh the page after installing it before it appears
 
 Tail the log for errors:
 
