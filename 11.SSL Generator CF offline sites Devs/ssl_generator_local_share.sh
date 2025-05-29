@@ -3,7 +3,7 @@
 # Cloudflare API credentials
 CF_API_TOKEN="YOUR CF API TOKEN"
 CF_ZONE_ID="YOUR DOMAIN ZONE ID"
-DOMAIN="test.yourdomain.co.za"
+DOMAIN="test.yourdomain.com"
 CERTBOT_DOMAIN="${CERTBOT_DOMAIN:-$DOMAIN}"
 CERT_DIR=$(pwd)
 
