@@ -6,6 +6,7 @@
 
 
 **Overview:**
+
 Migration Tools to generate 4 full cpanel account backups at a time then transfer to your destination host over ftp untill All/Specified account backups are migrated - then run seperate bulk restore script on destination host. (you can increase the limit by editing the script - 4 is just default to avoid overloading the source host - some hosts will flag the script and kill it if you cause too much load on a shared server so rather be safe.
 
 Full and Specific account only migration tools.
@@ -27,6 +28,8 @@ WSL DNS Checker
 Wp-admin injector
 
 SSL Generator for offline/dev sites using CloudFlare
+
+Standalone Migration scripts (No Ui)
 
 
 ## The following Tools have been tested on **cPanel/WHM v126.0.16** (CloudLinux 9.5.0), **PHP 8.2**. ##
