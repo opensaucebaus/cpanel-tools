@@ -38,44 +38,20 @@ This script allows you to generate and transfer full cPanel backups for selected
    - Whitelist source IP in CSF on destination  
 
 
-Deployment Steps
+## 📋 Installation
 
-Upload/extract Reseller_Migration_Tool_WebUI_Specific_Users_Only.zip to your server:
-
-Preferably under /public_html/specific_users/ of a live or temporary cPanel account
-
-Files to deploy:
-
-index.php
-
-migrate.php
-
-fetch_output.php
-
-migrations_script.sh
-
-.htaccess
-
-README.md
-
-Create Basic Auth credentials:
-sudo htpasswd -c /home/YOURCPUSER/public_html/specific_users/.htpasswd admin
+1. **Clone or upload to destination host under a live cpanel account** this repo under yourlivesite webroot (e.g. `public_html/`):  
+   ```bash
+   git clone https://github.com/opensaucebaus/cpanel-tools.git /home/yourlivesite/public_html/
 
 Set permissions:
-sudo chmod +x /home/YOURCPUSER/public_html/specific_users/migrations_script.sh
-sudo chown -R YOURCPUSER:YOURCPUSER /home/YOURCPUSER/public_html/specific_users/
 
-Open in browser:
-https://yourdomain/specific_users/
+chmod +x /home/yourlivesite/public_html/1.2Reseller_Migration_Tool_WebUI_Specific_Users_Only/migrations_script.sh
+chown -R yourcpuser:yourcpuser /home/yourcpuser/public_html/ - if you cloned as root and not the cpuser
 
-Enter your destination FTP and WHM Reseller credentials along with the list of accounts to migrate.
 
-Important Note
+Visit https://yourdomain.com/1.2Reseller_Migration_Tool_WebUI_Specific_Users_Only in your browser.
 
-If running on a shared hosting account, you must explicitly edit the path in migrate.php to reflect your environment (only necessary for older versions):
-$cmd = "/home/YOURCPUSER/public_html/specific_users/migrations_script.sh ...";
-
-Replace YOURCPUSER with the actual cPanel user name.
 
 Use Case
 
@@ -85,16 +61,3 @@ Can be used by resellers to gather backups and request root to perform the resto
 
 Avoids password resets and unnecessary account downtime
 
-Files Summary
-
-index.php: Form interface to enter credentials and account list
-
-migrate.php: Sanitizes inputs, exports credentials, launches script
-
-fetch_output.php: Displays migration log in browser
-
-migrations_script.sh: Uses WHM API to generate backups
-
-.htaccess: Basic Auth and HTTPS enforcement
-
-README.md: This guide
