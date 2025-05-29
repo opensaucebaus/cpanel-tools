@@ -47,7 +47,7 @@ ENSURE YOU HAVE ENOUGH FREE DISK SPACE TO STORE ALL THE BACKUPS ON THE DESTINATI
 
 **IMPORTANT: Manually migrate only the reseller cpanel account first using a full backup generated within the cPanel of the Reseller account using the native cPanel full backup function in cPanel.** - this will ensure all reseller packages migrate over to the destination host.
 
-Login to source reseller cPanel account, generate full backup using cpanel native backup function, download the cpanel backup to local then upload and restore on your destination host (or transfer from source to destination directly) this way it will migrate ALL RESELLER PACKAGES where the transfer tool in WHM as root does not in some cases. so it should look kinda like this
+Login to source reseller cPanel account, generate full backup using cpanel native backup function, download the cpanel backup to local then upload and restore on your destination host (or transfer from source to destination directly) this way it will migrate ALL RESELLER PACKAGES where the transfer tool in WHM as root does not in some cases. so it should look kinda like this as an example:
 
 | Source Host WHM List Accounts       | Destination Host WHM List Accounts  |
 |-------------------------------------|-------------------------------------|
@@ -90,7 +90,7 @@ Create "backups" folder via File Manager on DESTINATION HOST under any live cPan
 /home/yourlivedomain/public_html/1.1Reseller_Migration_Tool_WebUI_Full
 /home/yourlivedomain/public_html/1.2Reseller_Migration_Tool_WebUI_Specific_Users_Only
 
-Navigate to https://yourlivedomain/1.1Reseller_Migration_Tool_WebUI_Full/index.php to start the migration on the DESTINATION HOST; this will generate and transfer full cPanel backups from the SOURCE HOST to your DESTINATION HOST /backups dir.
+Navigate to https://yourlivedomain/1.1Reseller_Migration_Tool_WebUI_Full/ to start the migration on the DESTINATION HOST; this will generate and transfer full cPanel backups from the SOURCE HOST to your DESTINATION HOST /backups dir.
 
 Monitor transfer status on DESTINATION HOST by checking the file sizes under **/home/yourlivedomain/backups** - the Ui will print a notice once all backups have been generated and tell you to allow some time for the FTP transfers to complete before restoring the accounts using the bulk restore script.
 
