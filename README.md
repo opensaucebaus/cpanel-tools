@@ -4,6 +4,8 @@
 ![Full_Ui](https://github.com/user-attachments/assets/98b3a0e2-8cfa-414f-9a5e-ab7ec48a5179)
 ![Partial_Ui](https://github.com/user-attachments/assets/7a1f8527-9b10-429e-8527-8103c821e335)
 
+🛑 Disclaimer
+These tools are experimental. Use at your own risk. The author will not be responsible for any data loss, downtime, or other issues arising from use of these scripts.
 
 **Overview:**
 
