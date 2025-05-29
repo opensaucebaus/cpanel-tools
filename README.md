@@ -190,4 +190,4 @@ Migration complete.
 If these tools made your life easier, please consider buying me a coffee (or a pizza)!  
 Your donation helps me keep improving and maintaining them.  
 
-[Donate via PayPal](https://www.paypal.com/donate/?hosted_button_id=FNQ2RW62BR9HC)
+[Donate via PayPal](https://www.paypal.com/donate/?hosted_button_id=UGQVQEM655FAG)
