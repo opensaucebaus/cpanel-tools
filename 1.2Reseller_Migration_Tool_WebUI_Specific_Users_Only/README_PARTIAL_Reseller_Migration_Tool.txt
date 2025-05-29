@@ -58,3 +58,7 @@ Can be used by resellers to gather backups and request root to perform the resto
 
 Avoids password resets and unnecessary account downtime
 
+🛑 Disclaimer
+These tools are experimental. Use at your own risk. The author will not be responsible for any data loss, downtime, or other issues arising from use of these scripts.
+
+
