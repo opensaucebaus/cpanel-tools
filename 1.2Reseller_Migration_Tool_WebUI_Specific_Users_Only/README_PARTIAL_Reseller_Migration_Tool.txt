@@ -22,16 +22,20 @@ This script allows you to generate and transfer full cPanel backups for selected
 - Bulk restore still requires root access
 - Recommended to run on destination server as root for full automation
 
-## Dependencies (Ubuntu 22.04+)
-```bash
-sudo apt update
-sudo apt install \
-  apache2 \
-  php8.2 libapache2-mod-php8.2 php8.2-curl php8.2-xml php8.2-mbstring \
-  curl jq parallel
+## 🔧 Prerequisites
 
-sudo a2enmod rewrite headers
-sudo systemctl restart apache2
+1. **Source WHM Reseller**  
+   - Must have **Reseller** API token with _listaccts_ & _cpanel backup_ privileges  
+   - cPanel Backup feature enabled for each account  
+2. **Destination Server**  
+   - PHP 8.2 + modules: `curl`, `xml`, `mbstring`  
+   - Bash, `curl`, `jq` installed  
+3. **FTP Destination**  
+   - FTP account on destination host with write permissions to `backups/`  
+   - Port 21 open and reachable from source host  
+4. **Security**  
+   - Disable CageFS & PHP-FPM in the cPanel account running this app  
+   - Whitelist source IP in CSF on destination  
 
 
 Deployment Steps
