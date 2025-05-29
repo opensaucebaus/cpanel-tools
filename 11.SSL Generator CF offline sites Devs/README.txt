@@ -1,11 +1,10 @@
-# Quick SSL Generator for Local Dev (WSL Ubuntu 22)
+# Quick SSL Generator for Local Dev Sites or sites that don`t resolve publicly (WSL Ubuntu 22)
 
-A simple Bash wrapper around Certbot and the Cloudflare API to issue or renew DNS-validated SSL certificates for offline development domains on WSL Ubuntu 22.
+A simple Bash wrapper around Certbot and the Cloudflare API to issue or renew DNS-validated SSL certificates for offline development domains using WSL Ubuntu 22/24.
 
 ---
 
-## Requirements
-
+## Requirements/Tested on:
 - **WSL Ubuntu 22** (tested on 22.04 LTS)  
 - **Bash** (≥ 4.x)  
 - **curl**  
@@ -17,41 +16,40 @@ A simple Bash wrapper around Certbot and the Cloudflare API to issue or renew DN
 ---
 
 ## Installation
-
-1. **Clone or copy** this repo into your WSL home (e.g. `~/ssl-generator`).  
+1. **Clone** this repo into your WSL home (e.g. `~/ssl-generator`).  
 2. **Make the script executable**:  
    ```bash
-   chmod +x ssl.sh
-Install dependencies (if you haven’t already):
+   chmod +x ssl_generator_local_share.sh
 
 
+## Install dependencies (if you haven’t already):
 sudo apt update
 sudo apt install -y curl jq certbot
-Configuration
+
+
+## Configuration
 Open ssl_generator_local_share.sh in your editor.
 
-Fill in your Cloudflare credentials at the top of the file:
-
-
+## Fill in your Cloudflare credentials at the top of the file:
 CF_API_TOKEN="YOUR_CF_API_TOKEN"
 CF_ZONE_ID="YOUR_CF_ZONE_ID"
-Set your target domain and email address:
 
-
+## Set your target domain and email address:
 DOMAIN="test.yourdomain.com"
+
 # Change this to the address Certbot will use for expiration notices:
 EMAIL="you@example.com"
 (Optional) Adjust the DNS propagation wait time:
 
-
 sleep 30  # Seconds to wait for Cloudflare to publish the TXT record
-Usage
+
+## Usage
 All steps are automated via Certbot’s hooks—just run the script without arguments:
 
 ./ssl_generator_local_share.sh
 
 
-This will:
+## This will:
 
 Deploy _acme-challenge.<your-domain> TXT record via Cloudflare API
 
