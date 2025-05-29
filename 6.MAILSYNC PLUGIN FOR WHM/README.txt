@@ -6,9 +6,9 @@ A simple script to install the MailSync cPanel/WHM plugin. Run as **root** over 
 
 ## 🔧 Prerequisites
 
-- A **cPanel/WHM** server (version ≥ v11.92)  
-- **Root** access via SSH or WHM Terminal  
-- Internet connectivity to fetch Perl modules and system packages  
+- A **cPanel/WHM** server
+- **Root** access via SSH or WHM Terminal
+- Internet connectivity to fetch Perl modules and system packages
 
 ---
 
