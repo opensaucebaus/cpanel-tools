@@ -28,7 +28,7 @@ Install dependencies (if you haven’t already):
 sudo apt update
 sudo apt install -y curl jq certbot
 Configuration
-Open ssl.sh in your editor.
+Open ssl_generator_local_share.sh in your editor.
 
 Fill in your Cloudflare credentials at the top of the file:
 
@@ -48,8 +48,9 @@ sleep 30  # Seconds to wait for Cloudflare to publish the TXT record
 Usage
 All steps are automated via Certbot’s hooks—just run the script without arguments:
 
+./ssl_generator_local_share.sh
 
-./ssl.sh
+
 This will:
 
 Deploy _acme-challenge.<your-domain> TXT record via Cloudflare API
@@ -62,26 +63,8 @@ Remove the TXT record after validation
 
 Copy the resulting cert and key into your current directory
 
-Hooks Explained
-./ssl.sh deploy_challenge
-– Called by Certbot to create the DNS TXT record.
-
-./ssl.sh clean_challenge
-– Called by Certbot to delete the DNS TXT record.
-
-You normally don’t call these directly—Certbot does.
-
-Step-by-Step Example
-Configure credentials & domain in ssl.sh.
-
-Run the script:
-
-
-cd ~/ssl-generator
-./ssl.sh
-Watch Certbot output.
-
 After success, your .pem files will live in the current folder.
+
 
 Troubleshooting
 Invalid API token/zone
