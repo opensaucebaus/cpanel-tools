@@ -83,15 +83,15 @@ Upload to non public folder for example the /backups folder under yourlivedomain
 Upload bulkrestore.sh to /backups folder under yourlivedomain/backups
 
 SSH into the DESTINATION HOST as root or access Terminal in WHM as root - IF YOU DO NOT HAVE ROOT ACCESS TO THE DESTINATION YOU WILL HAVE TO ASK YOUT HOST TO RESTORE THE ACCOUNTS:
-a. Execute "cd /home/yourlivedomain/backups"
-b. Execute "ls > backupslist" then "nano backupslist" and remove any lines that are not cPanel backup files. For example, backup-9.8.2023_08-16-28_cpuser.tar.gz is correct, and susandunsus.sh must be removed from the list and saved. - ALSO REMOVE THE PRIMARY RESELLER CPANEL BACKUP ACCOUNT FROM THE LIST AS IT SHOULD ALREADY BE RESTORED AT THIS POINT
-c. Execute "./bulkrestore.sh in /home/yourlivedomain/backups" - this will display the restore progress using /scripts/restorepkg (must be run as root)
-d. (OPTIONAL) Update DNS zones - "nano alldomains.txt" then copy all zones from SOURCE HOST WHM / Zone Manager and save. Then run "sed -i 's/[[:space:]]*$//' alldomains.txt" to remove any spaces after the domains. Next, run "nano updateandsync.sh" and edit the NS / SOA sections to reflect your NS, then run "./updateandsync.sh". This is ONLY REQUIRED IF SOURCE HOST NS reflects in restored account DNS zones on DESTINATION HOST, which can be checked via Zone Manager in WHM on DESTINATION HOST.
-e. (OPTIONAL) Suspend source accounts to avoid re migrations / while propagation takes place - Execute "nano susandunsus.sh" and edit the following fields to reflect the SOURCE HOST reseller account details and save:
+Execute "cd /home/yourlivedomain/backups"
+Execute "ls > backupslist" then "nano backupslist" and remove any lines that are not cPanel backup files. For example, backup-9.8.2023_08-16-28_cpuser.tar.gz is correct, and susandunsus.sh must be removed from the list and saved. - ALSO REMOVE THE PRIMARY RESELLER CPANEL BACKUP ACCOUNT FROM THE LIST AS IT SHOULD ALREADY BE RESTORED AT THIS POINT
+Execute "./bulkrestore.sh in /home/yourlivedomain/backups" - this will display the restore progress using /scripts/restorepkg (must be run as root)
+(OPTIONAL) Update DNS zones - "nano alldomains.txt" then copy all zones from SOURCE HOST WHM / Zone Manager and save. Then run "sed -i 's/[[:space:]]*$//' alldomains.txt" to remove any spaces after the domains. Next, run "nano updateandsync.sh" and edit the NS / SOA sections to reflect your NS, then run "./updateandsync.sh". This is ONLY REQUIRED IF SOURCE HOST NS reflects in restored account DNS zones on DESTINATION HOST, which can be checked via Zone Manager in WHM on DESTINATION HOST.
+(OPTIONAL) Suspend source accounts to avoid re migrations / while propagation takes place - Execute "nano susandunsus.sh" and edit the following fields to reflect the SOURCE HOST reseller account details and save:
 whm_host="https://source.host.net"
 whm_user="resellerusername"
 api_token="RESELLERAPITOKEN"
-f. (OPTIONAL) Execute "./susandunsus.sh suspend" under yourlivedomain/backups to suspend all accounts under the Reseller account on the SOURCE HOST to avoid users making changes while propagation takes place then having to remigrate accounts.
+(OPTIONAL) Execute "./susandunsus.sh suspend" under yourlivedomain/backups to suspend all accounts under the Reseller account on the SOURCE HOST to avoid users making changes while propagation takes place then having to remigrate accounts.
 
 Address any missing or failed accounts with - 1.2Reseller_Migration_Tool_WebUI_Specific_Users_Only - on DESTINATION HOST - works the same as the full migration tool but only for specific cPanel usernames to avoid having to redo the entire reseller account. This tool will backup and transfer specified missing accounts from SOURCE HOST (specified by cPanel usernames).
 
