@@ -12,8 +12,8 @@ A PHP-powered web UI + Bash backend to generate and FTP full cPanel backups for 
 - **CloudLinux** v9.5.0 STANDARD  
 - **PHP** 8.2  
 - **Server Configuration**  
-  - Run on your **destination** host (where you have root or high‐privilege access)  
-  - **Disable CageFS** & **PHP-FPM restrictions** on the cPanel account hosting the web UI  
+  - Run on your **destination** host (migration apps work with non root access howwever restore script requires root)  
+  - **Disable CageFS** & **PHP-FPM restrictions** on the cPanel account hosting the web UI migration apps  
   - Whitelist the **source** host’s IP in **CSF** on the destination (and vice-versa if possible)  
 
 ---
@@ -37,15 +37,9 @@ A PHP-powered web UI + Bash backend to generate and FTP full cPanel backups for 
 
 ## 📋 Installation
 
-1. **Clone or upload to destination host under a live cpanel account** this repo under yourlivesite webroot (e.g. `public_html/migration/`):  
-   ```bash
-   git clone https://github.com/opensaucebaus/cpanel-tools.git /home/yourlivesite/public_html/migration
+1. **Clone or upload to destination host under a live cpanel account** this repo under yourlivesite webroot (e.g. `/home/yourlivecpanel/public_html/`):  
 
-
-Secure with HTTP Basic Auth (optional but recommended):
-
-htpasswd -c /home/yourcpuser/public_html/migration/.htpasswd admin
-
+git clone https://github.com/opensaucebaus/cpanel-tools.git
 
 Set permissions:
 
@@ -53,7 +47,7 @@ chmod +x /home/yourlivesite/public_html/migration/1.1Reseller_Migration_Tool_Web
 chown -R yourcpuser:yourcpuser /home/yourcpuser/public_html/migration - if you cloned as root and not the cpuser
 
 
-Visit https://yourdomain.com/migration/1.1Reseller_Migration_Tool_WebUI_Full in your browser.
+Visit https://yourdomain.com/1.1Reseller_Migration_Tool_WebUI_Full in your browser.
 
 
 🚀 Usage
@@ -97,12 +91,6 @@ cPanel accounts	Backup feature enabled
 🛑 Disclaimer
 These tools are experimental. Use at your own risk. The author will not be responsible for any data loss, downtime, or other issues arising from use of these scripts.
 
-
-License
-This project is open source under the MIT License. Feel free to use and contribute
-
-
-
 🚀 Usage
 Enter Source WHM host, Reseller username, and API token.
 
@@ -115,20 +103,6 @@ Click Start Migration.
 Monitor the live log (up to 4 concurrent backups) in the browser.
 
 After completion, verify backup files in your FTP backups/ folder.
-⚙️ How It Works
-index.php: Web form + JS poller.
-
-migrate.php: Validates inputs, exports env vars, kicks off migrations_script.sh.
-
-fetch_output.php: Streams output.log to the browser.
-
-migrations_script.sh:
-
-Truncates old logs.
-
-Reads ACCOUNTS_LIST and runs ≤4 simultaneous fullbackup_to_ftp API calls.
-
-Logs each event with timestamps.
 
 📋 Requirements Summary
 Component	Version / Notes
