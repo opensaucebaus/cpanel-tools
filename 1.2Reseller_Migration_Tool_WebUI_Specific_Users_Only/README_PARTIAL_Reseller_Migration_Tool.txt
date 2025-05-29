@@ -1,8 +1,6 @@
 Specific cPanel Account Under Reseller - Migration Tool
 
-A PHP web UI to trigger backups for selected cPanel accounts under a reseller via the WHM API, running from a middle-man server.
-
-README.md
+A PHP web UI to trigger backups for selected cPanel accounts under a reseller via the WHM API.
 
 # Specific Reseller Migration Tool
 
@@ -41,14 +39,13 @@ This script allows you to generate and transfer full cPanel backups for selected
 ## 📋 Installation
 
 1. **Clone or upload to destination host under a live cpanel account** this repo under yourlivesite webroot (e.g. `public_html/`):  
-   ```bash
-   git clone https://github.com/opensaucebaus/cpanel-tools.git /home/yourlivesite/public_html/
+
+git clone https://github.com/opensaucebaus/cpanel-tools.git
 
 Set permissions:
 
 chmod +x /home/yourlivesite/public_html/1.2Reseller_Migration_Tool_WebUI_Specific_Users_Only/migrations_script.sh
 chown -R yourcpuser:yourcpuser /home/yourcpuser/public_html/ - if you cloned as root and not the cpuser
-
 
 Visit https://yourdomain.com/1.2Reseller_Migration_Tool_WebUI_Specific_Users_Only in your browser.
 
