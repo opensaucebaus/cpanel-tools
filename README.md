@@ -36,6 +36,21 @@ Standalone Migration scripts (No Ui)
 
 ## The following Tools have been tested on **cPanel/WHM v126.0.16** (CloudLinux 9.5.0), **PHP 8.2**. ##
 
+## 🔧 Prerequisites
+
+1. **Source WHM Reseller**  
+   - Must have **Reseller** API token with _listaccts_ & _cpanel backup_ privileges  
+   - cPanel Backup feature enabled for each account  
+2. **Destination Server**  
+   - PHP 8.2 + modules: `curl`, `xml`, `mbstring`  
+   - Bash, `curl`, `jq` installed  
+3. **FTP Destination**  
+   - FTP account under a live cpanel account on destination host with write permissions to `/backups/`  
+   - Port 21 open and reachable from source host  
+4. **Security**  
+   - Disable CageFS & PHP-FPM for the cPanel account running this app on the destination host  
+   - Whitelist source IP in CSF on destination
+   
 **Experimental tools** for automated bulk backups, FTP-transfers, and restoring cPanel reseller accounts using WHM API + bash scripts.**
 
 **Reseller migration tools/scripts - FULL or PARTIAL migrations - cPanel account logins remain in tact.**
