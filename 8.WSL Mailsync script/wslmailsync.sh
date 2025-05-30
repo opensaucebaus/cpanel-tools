@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Source and destination mail server setting
-SERVER1=imap.gmail.com
-SERVER2=imap.gmail.com
+SERVER1=imap.sourcehost.com
+SERVER2=imap.destinationhost.com
 
 # Select appropriate auth mechanism.
 #AUTHMECH1="--authmech1 LOGIN"
