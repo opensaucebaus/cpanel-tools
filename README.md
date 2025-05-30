@@ -4,9 +4,6 @@
 ![Full_Ui](https://github.com/user-attachments/assets/98b3a0e2-8cfa-414f-9a5e-ab7ec48a5179)
 ![Partial_Ui](https://github.com/user-attachments/assets/7a1f8527-9b10-429e-8527-8103c821e335)
 
-🛑 Disclaimer
-These tools are experimental. Use at your own risk. The author will not be responsible for any data loss, downtime, or other issues arising from use of these scripts.
-
 **Overview:**
 
 Migration Tools to generate 4 full cpanel account backups at a time then transfer to your destination host over ftp untill All/Specified account backups are migrated - then run seperate bulk restore script on destination host. (you can increase the limit by editing the script - 4 is just default to avoid overloading the source host - some hosts will flag the script and kill it if you cause too much load on a shared server so rather be safe.
@@ -181,7 +178,8 @@ Clean up "backups" folder on DESTINATION HOST once all accounts` integrity confi
 
 Migration complete.
 
-
+🛑 Disclaimer
+These tools are experimental. Use at your own risk. The author will not be responsible for any data loss, downtime, or other issues arising from use of these scripts.
 
 **I hope these tools make your life easier :) **
 
