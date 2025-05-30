@@ -64,7 +64,7 @@ ENSURE YOU HAVE ENOUGH FREE DISK SPACE TO STORE ALL THE BACKUPS ON THE DESTINATI
 
 **IMPORTANT: Manually migrate only the reseller cpanel account first using a full backup generated within the cPanel of the Reseller account using the native cPanel full backup function in cPanel.** - this will ensure all reseller packages migrate over to the destination host.
 
-Login to source reseller cPanel account, generate full backup using cpanel native backup function, download the cpanel backup to local then upload and restore on your destination host (or transfer from source to destination directly) this way it will migrate ALL RESELLER PACKAGES where the transfer tool in WHM as root does not in some cases. so it should look kinda like this as an example:
+Log into the source reseller cPanel account, generate full backup using cpanel native backup function, download the cpanel backup to local then upload and restore on your destination host (or transfer from source to destination directly) this way it will migrate ALL RESELLER PACKAGES where the transfer tool in WHM as root does not in some cases. so it should look kinda like this as an example:
 
 | Source Host WHM List Accounts       | Destination Host WHM List Accounts  |
 |-------------------------------------|-------------------------------------|
@@ -84,7 +84,7 @@ Login to source reseller cPanel account, generate full backup using cpanel nativ
 **Then create the folder "backups" where the full cpanel account backups will be stored on the destination host:**
 /home/yourlivedomain/backups
 
-Modify .htaccess file located where you uploaded the migration tool on the destination host - for example - /home/yourlivedomain/public_html/ - to only allow access to your IP/source host IP - if you do not wish the tool to be publicly accessible
+**OPTIONAL** - Modify .htaccess file located where you uploaded the migration tool on the destination host - for example - /home/yourlivedomain/public_html/ - to only allow access to your IP/source host IP - **if you do not wish the tool to be publicly accessible**
 
 **WHM Reseller Pre-Migration Steps:**
 
@@ -119,7 +119,7 @@ _If you don’t have root access, ask your host to restore the accounts for you.
 
 ---
 
-**a. Change into the backups directory**  
+**a. cd into the backups directory**  
     cd /home/yourlivedomain/backups
 
 ---
