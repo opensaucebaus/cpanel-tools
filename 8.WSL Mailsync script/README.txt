@@ -4,4 +4,4 @@ Requirements - imapsync
 
 Clone the tool via WSL then enter the email account details in users.txt - close and save 
 
-Then run wslmailsynch.sh - mail migration progress will display.
+Then run wslmailsync.sh - mail migration progress will display.
