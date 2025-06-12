@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bulk Select in WHM using browser console - For Bulk IP change / Ownership Update / Transfer Tool in WHM</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fdfdfd;
+            margin: 0;
+            padding: 1rem;
+        }
+        .container {
+            max-width: 960px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        h1, h2 {
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 0.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+        }
+        h1 {
+            font-size: 2em;
+        }
+        h2 {
+            font-size: 1.5em;
+        }
+        h2 u {
+            text-decoration: none;
+            border-bottom: 3px solid #007bff;
+        }
+        pre {
+            background-color: #f5f7fa;
+            border: 1px solid #d1d5da;
+            border-radius: 6px;
+            padding: 16px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        code {
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+        p {
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bulk Select in WHM Ui using browser console - For Bulk IP change / Ownership Update / Transfer Tool in WHM</h1>
+
+        <h2><u>BULK SELECT DOMAINS IN WHM TRANSFER TOOL</u></h2>
+        <p>When using WHM root transfer tool set view to ALL to see All accounts then - open browser console and paste this code in - then enter the domains you wish to transfer or exclude below in your browser console and hit enter to select or ignore them:</code></p>
+<pre><code>let domains = [
+    ['domain1.com'],
+    ['domain2.net'],
+    ['domain3.org'],
+    ['domain4.co.uk'],
+    ['domain5.com'],
+    ['domain6.com'],
+    ['domain7.com'],
+    ['domain8.net'],
+    ['domain9.com'],
+    ['domain10.org'],
+    ['domain11.com'],
+];
+
+var reverse = 0; // 0 will select everything in the list above, 1 will select everything that's not in the list
+
+function check(array, value) {
+    return array.some(entry => entry[0] === value);
+}
+
+document.querySelectorAll('.data-row').forEach(row => {
+    let domainName = row.querySelector('td:nth-child(2) > #account-name_').innerText;
+    if ((check(domains, domainName) && reverse === 0) || (!check(domains, domainName) && reverse === 1)) {
+        console.log(domainName);
+        row.querySelector('td:nth-child(1) input').click();
+    }
+});
+</code></pre>
+
+        <h2><u>BULK SELECT DOMAINS AND CHANGE DEDICATED IP</u></h2>
+		<p>When changing multiple domain IPs in WHM add domains and IPs in format below in browser console and hit enter to set it</code></p>
+<pre><code>let domains = [
+    ['domain1.com ','192.168.1.10'],
+    ['domain2.net ','192.168.1.11'],
+    ['domain3.org ','192.168.1.12'],
+    ['domain4.com ','192.168.1.13'],
+    ['domain5.co.za ','192.168.1.14'],
+    ['domain6.com ','192.168.1.15'],
+];
+
+var action = 0;
+// 0 = select domains, 1 = on following page change ip's from dropdowns
+
+function optionExists ( needle, haystack )
+{
+    var optionExists = false,
+        optionsLength = haystack.length;
+
+    while ( optionsLength-- )
+    {
+        if ( haystack.options[ optionsLength ].value === needle )
+        {
+            optionExists = true;
+            break;
+        }
+    }
+    return optionExists;
+}
+
+function check(array, value) {
+    return array.some(entry => entry[0].trim() === value);
+}
+
+if(action == 0){
+    document.querySelectorAll('#ipchg tbody tr').forEach(row => {
+        let domainName = row.querySelector('td:nth-child(2)').innerText;
+
+        if(check(domains,domainName)){
+            row.querySelector('td:nth-child(1) > input').checked = true;
+        };
+
+    });
+}else if(action == 1) {
+
+    domains.forEach(domainData => {
+        document.querySelectorAll('.simpleheading').forEach((domainTitle,index) => {
+
+        let selectname = 'customip-'+(index+1);
+        if((domainTitle.innerText).includes(domainData[0].trim())){
+
+            if(optionExists(domainData[1],document.getElementsByName(selectname)[0])){
+                document.getElementsByName(selectname)[0].value = domainData[1];
+            }else {
+                console.log('IP '+domainData[1]+' for domain '+domainData[0]+' was not found in selection');
+            }
+        }
+
+        });
+    })
+
+}
+</code></pre>
+
+        <h2><u>BULK CHANGE OWNERSHIP SELECTOR</u></h2>
+        <p>In WHM Change ownership of multiple accounts - open browser console - paste the code mentioned below and edit your domains then hit enter</code></p>
+<pre><code>let domains = [
+    ['sub1.domain1.com'],
+    ['admin.domain2.com'],
+    ['admin.domain3.org'],
+    ['sub2.domain4.net'],
+    ['sub3.domain4.net'],
+    ['admin.domain5.com'],
+    ['admin.domain6.com'],
+    ['admin.domain7.com'],
+    ['admin.domain8.co.za'],
+];
+
+var action = 0;
+// 0 = select domains, 1 = on following page change ip's from dropdowns
+
+function optionExists ( needle, haystack )
+{
+    var optionExists = false,
+        optionsLength = haystack.length;
+
+    while ( optionsLength-- )
+    {
+        if ( haystack.options[ optionsLength ].value === needle )
+        {
+            optionExists = true;
+            break;
+        }
+    }
+    return optionExists;
+}
+
+function check(array, value) {
+    return array.some(entry => entry[0] === value);
+}
+
+if(action == 0){
+    document.querySelectorAll('#mlttbl tbody tr').forEach(row => {
+        let domainName = row.querySelector('td:nth-child(2)').innerText;
+
+        if(check(domains,domainName)){
+            row.querySelector('td:nth-child(1) > input').checked = true;
+        };
+
+    });
+}else if(action == 1) {
+
+    domains.forEach(domainData => {
+        document.querySelectorAll('.simpleheading').forEach((domainTitle,index) => {
+
+            let selectname = 'customip-'+(index+1);
+            if((domainTitle.innerText).includes(domainData[0])){
+
+                if(optionExists(domainData[1],document.getElementsByName(selectname)[0])){
+                    document.getElementsByName(selectname)[0].value = domainData[1];
+                }else {
+                    console.log('IP '+domainData[1]+' for domain '+domainData[0]+' was not found in selection');
+                }
+            }
+
+        });
+    })
+
+}
+</code></pre>
+
+        <h2><u>BULK SELECT ACCOUNTS FOR TERMINATION in WHM</u></h2>
+		<p>In WHM Terminate Account Screen - open browser console - paste in the code - edit domains then hit enter to select the listed domains</code></p>
+<pre><code>var domains = ["domain1.com", "domain2.net", "domain3.org"];
+
+domains.forEach(function (domain) {
+    var tdElement = Array.from(document.querySelectorAll('td')).find(function (td) {
+        return td.textContent.includes(domain);
+    });
+
+    if (tdElement) {
+        var parentTr = tdElement.closest('tr');
+        var firstCheckbox = parentTr.querySelector('input[type="checkbox"]');
+
+        if (firstCheckbox) {
+            firstCheckbox.checked = true;
+            firstCheckbox.dispatchEvent(new Event('click'));
+        }
+    }
+});
+</code></pre>
+    </div>
+</body>
+</html>
