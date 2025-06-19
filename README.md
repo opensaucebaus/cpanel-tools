@@ -185,6 +185,8 @@ These tools are experimental. Use at your own risk. The author will not be respo
 
 ## 🙏 Support
 
+If you find these tools useful, consider giving it a ⭐ on GitHub to help others discover it!
+
 If these tools made your life easier, please consider buying me a coffee (or a pizza)!  
 Your support helps me a lot!  
 
