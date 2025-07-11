@@ -102,7 +102,7 @@ Installation
 
     Create a directory inside your Moodle web root (e.g., public_html/upgrader).
 
-    Place the index.php script inside that new directory.
+    Place the upgrader.php script inside that new directory.
 
     Security: It is highly recommended to protect this directory (e.g., with an .htaccess file) or to delete it after the upgrade is complete.
 
@@ -110,7 +110,7 @@ How to Use
 
     Log in to your Moodle site as a user with full site administrator privileges.
 
-    Navigate to the upgrader URL in your browser (e.g., https://yourmoodlesite.com/upgrader/).
+    Navigate to the upgrader URL in your browser (e.g., https://yourmoodlesite.com/upgrader/upgrader.php).
 
     The script will automatically fetch the latest MOODLE_XXX_STABLE branches from Git and populate the dropdown menu.
 
