@@ -1,2 +1,0 @@
-This is not intended for malicious use - it is intended for those scenarios where you urgently require wp-admin access to purge cache, disable certain plugins, create plugin lvl backups for example updraft etc before migrating a wordpress site - or when you urgently need to fix an issue for a client but you don`t have wp-admin access - the list of use cases goes on and on.
- 
